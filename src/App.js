@@ -1,12 +1,16 @@
-import Button from '@mui/material/Button';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import Home from './components/Home';
+import PageNotFound from './components/PageNotFound';
 
 function App() {
+
   return (
-    <div className="App">
-      <h1>Hello World</h1>
-      <Button variant="contained">Contained</Button>
-    </div>
+      <div>
+        <Routes>
+          <Route path="/" element={<Home />} /> 
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </div>
   );
 }
 
