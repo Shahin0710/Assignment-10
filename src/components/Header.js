@@ -6,18 +6,55 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import IconButton from '@mui/material/IconButton';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { makeStyles } from 'tss-react/mui';
 import Color from './Color';
 
-const pages = ['Courses', 'FAQ', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = [
+    {name: 'Courses', path: '/courses',},
+    {name: 'FAQ', path: '/faq',},
+    {name: 'Blog', path: '/blog',},
+];
+
+const pagesForMobile = [
+    {name: 'Home', path: '/',},
+    {name: 'Report', path: '/report',},
+    {name: 'Product', path: '/product',},
+    {name: 'Team', path: '/team',},
+    {name: 'Support', path: '/support',},
+    {name: 'Courses', path: '/courses',},
+    {name: 'FAQ', path: '/faq',},
+    {name: 'Blog', path: '/blog',},
+];
+
+// A STYLE SHEET
+const useStyles = makeStyles()((theme) => {
+   return {
+     navLink: {
+        textDecoration: 'none',
+        color: 'inherit',
+     },
+     navLinkActive: {
+        textDecoration: 'none',
+        color: 'inherit',
+     },
+   };
+ });
 
 function Header() {
+  const { classes } = useStyles();
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -89,10 +126,20 @@ function Header() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
+              {pagesForMobile.map((page) => (
+                <NavLink  to={page?.path} key={page?.name} onClick={handleCloseNavMenu}
+                  className={
+                      location.pathname === '/'
+                          ? classes.navLinkActive
+                          : classes.navLink
+                  }
+                >
+                    <ListItem component="div" disablePadding sx={{ mt: 2, mx: 5 }}>
+                        <ListItemButton>
+                            <ListItemText primary={page?.name} />
+                        </ListItemButton>
+                    </ListItem>
+                </NavLink>
               ))}
             </Menu>
           </Box>
@@ -101,7 +148,7 @@ function Header() {
             variant="h5"
             noWrap
             component="a"
-            href=""
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -118,18 +165,19 @@ function Header() {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
-                key={page}
+                key={page?.name}
                 onClick={handleCloseNavMenu}
+                href={page?.path}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                {page?.name}
               </Button>
             ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Color />
-            <Tooltip title="Open settings">
+            <Tooltip title="This is a Name">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
@@ -150,11 +198,15 @@ function Header() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Typography onClick={() => navigate('/login')} textAlign="center">Login</Typography>
                 </MenuItem>
-              ))}
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Typography onClick={() => navigate('/signup')} textAlign="center">Signup</Typography>
+                </MenuItem>
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">Log Out</Typography>
+                </MenuItem>
             </Menu>
           </Box>
         </Toolbar>
