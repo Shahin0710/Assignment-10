@@ -1,11 +1,14 @@
 import React from 'react';
-import CommonLayout from '../commonLayout/CommonLayout';
+import Sidebar from './Sidebar';
 
 const Home = () => {
   return (
-    <CommonLayout>
+    <Sidebar>
         <h1>Home</h1>
-    </CommonLayout>
+        <h1>Home</h1>
+        <h1>Home</h1>
+        <h1>Home</h1>
+    </Sidebar>
   )
 }
 
