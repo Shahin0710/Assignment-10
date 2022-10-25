@@ -1,4 +1,9 @@
+import Groups2Icon from '@mui/icons-material/Groups2';
 import HomeIcon from '@mui/icons-material/Home';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import ReportProblemIcon from '@mui/icons-material/ReportProblem';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import MuiDrawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -7,26 +12,19 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { styled } from '@mui/material/styles';
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
+import { makeStyles } from 'tss-react/mui';
 
-const drawerWidth = 290;
+const drawerWidth = 180;
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
     '& .MuiDrawer-paper': {
         position: 'relative',
         whiteSpace: 'nowrap',
         width: drawerWidth,
-        // transition: theme.transitions.create('width', {
-        //     easing: theme.transitions.easing.sharp,
-        //     duration: theme.transitions.duration.enteringScreen,
-        // }),
         boxSizing: 'border-box',
         ...(!open && {
             overflowX: 'hidden',
-            // transition: theme.transitions.create('width', {
-            //     easing: theme.transitions.easing.sharp,
-            //     duration: theme.transitions.duration.leavingScreen,
-            // }),
             width: theme.spacing(4),
             [theme.breakpoints.up('sm')]: {
                 width: theme.spacing(5.5),
@@ -37,7 +35,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 const SidebarNav = styled(List)({
     '& .MuiListItemButton-root': {
-        paddingLeft: 10,
+        paddingLeft: 20,
     },
     '& .MuiListItemIcon-root': {
         minWidth: 0,
@@ -48,259 +46,125 @@ const SidebarNav = styled(List)({
     },
 });
 
-
+// A STYLE SHEET
+const useStyles = makeStyles()((theme) => {
+   return {
+     navLink: {
+        textDecoration: 'none',
+        color: 'inherit',
+     },
+     navLinkActive: {
+        textDecoration: 'none',
+        color: '#9c27b0',
+     },
+   };
+ });
 
 const Sidebar = function () {
+    const { classes } = useStyles();
+    const location = useLocation();
+
     return (
         <Drawer variant="permanent" open={true} sx={{ height: '100%' }}>
             <SidebarNav component="nav" disablePadding>
-                <NavLink to="/">
-                    <ListItem component="div" disablePadding>
+                <NavLink to="/"
+                    className={
+                        location.pathname === '/'
+                            ? classes.navLinkActive
+                            : classes.navLink
+                    }
+                >
+                    <ListItem component="div" disablePadding sx={{ mt: 2 }}>
                         <ListItemButton>
                             <ListItemIcon>
                                 <HomeIcon />
                             </ListItemIcon>
-                            <ListItemText primary='Start' />
+                            <ListItemText primary='Home' />
                         </ListItemButton>
                     </ListItem>
                 </NavLink>
-                <NavLink to="/">
-                    <ListItem component="div" disablePadding>
+
+                <NavLink to="/blog"
+                    className={
+                        location.pathname === '/blog'
+                            ? classes.navLinkActive
+                            : classes.navLink
+                    }
+                >
+                    <ListItem component="div" disablePadding sx={{ mt: 2 }}>
                         <ListItemButton>
                             <ListItemIcon>
-                                <HomeIcon />
+                                <MenuBookIcon />
                             </ListItemIcon>
-                            <ListItemText primary='Dashboard' />
+                            <ListItemText primary='Blog' />
                         </ListItemButton>
                     </ListItem>
                 </NavLink>
-                <NavLink to="/">
-                    <ListItem component="div" disablePadding>
+
+                <NavLink to="/report"
+                    className={
+                        location.pathname === '/report'
+                            ? classes.navLinkActive
+                            : classes.navLink
+                    }
+                >
+                    <ListItem component="div" disablePadding sx={{ mt: 2 }}>
                         <ListItemButton>
                             <ListItemIcon>
-                                <HomeIcon />
+                                <ReportProblemIcon />
                             </ListItemIcon>
-                            <ListItemText primary='Dashboard' />
+                            <ListItemText primary='Report' />
                         </ListItemButton>
                     </ListItem>
                 </NavLink>
-                <NavLink to="/">
-                    <ListItem component="div" disablePadding>
+
+                <NavLink to="/product"
+                    className={
+                        location.pathname === '/product'
+                            ? classes.navLinkActive
+                            : classes.navLink
+                    }
+                >
+                    <ListItem component="div" disablePadding sx={{ mt: 2 }}>
                         <ListItemButton>
                             <ListItemIcon>
-                                <HomeIcon />
+                                <ShoppingCartIcon />
                             </ListItemIcon>
-                            <ListItemText primary='Dashboard' />
+                            <ListItemText primary='Product' />
                         </ListItemButton>
                     </ListItem>
                 </NavLink>
-                <NavLink to="/">
-                    <ListItem component="div" disablePadding>
+
+                <NavLink to="/team"
+                    className={
+                        location.pathname === '/team'
+                            ? classes.navLinkActive
+                            : classes.navLink
+                    }
+                >
+                    <ListItem component="div" disablePadding sx={{ mt: 2 }}>
                         <ListItemButton>
                             <ListItemIcon>
-                                <HomeIcon />
+                                <Groups2Icon />
                             </ListItemIcon>
-                            <ListItemText primary='Dashboard' />
+                            <ListItemText primary='Team' />
                         </ListItemButton>
                     </ListItem>
                 </NavLink>
-                <NavLink to="/">
-                    <ListItem component="div" disablePadding>
+
+                <NavLink to="/support"
+                    className={
+                        location.pathname === '/support'
+                            ? classes.navLinkActive
+                            : classes.navLink
+                    }
+                >
+                    <ListItem component="div" disablePadding sx={{ mt: 2, mb: 15 }}>
                         <ListItemButton>
                             <ListItemIcon>
-                                <HomeIcon />
+                                <SupportAgentIcon />
                             </ListItemIcon>
-                            <ListItemText primary='Dashboard' />
-                        </ListItemButton>
-                    </ListItem>
-                </NavLink>
-                <NavLink to="/">
-                    <ListItem component="div" disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary='Dashboard' />
-                        </ListItemButton>
-                    </ListItem>
-                </NavLink>
-                <NavLink to="/">
-                    <ListItem component="div" disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary='Dashboard' />
-                        </ListItemButton>
-                    </ListItem>
-                </NavLink>
-                <NavLink to="/">
-                    <ListItem component="div" disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary='Dashboard' />
-                        </ListItemButton>
-                    </ListItem>
-                </NavLink>
-                <NavLink to="/">
-                    <ListItem component="div" disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary='Dashboard' />
-                        </ListItemButton>
-                    </ListItem>
-                </NavLink>
-                <NavLink to="/">
-                    <ListItem component="div" disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary='Dashboard' />
-                        </ListItemButton>
-                    </ListItem>
-                </NavLink>
-                <NavLink to="/">
-                    <ListItem component="div" disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary='Dashboard' />
-                        </ListItemButton>
-                    </ListItem>
-                </NavLink>
-                <NavLink to="/">
-                    <ListItem component="div" disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary='Dashboard' />
-                        </ListItemButton>
-                    </ListItem>
-                </NavLink>
-                <NavLink to="/">
-                    <ListItem component="div" disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary='Dashboard' />
-                        </ListItemButton>
-                    </ListItem>
-                </NavLink>
-                <NavLink to="/">
-                    <ListItem component="div" disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary='Dashboard' />
-                        </ListItemButton>
-                    </ListItem>
-                </NavLink>
-                <NavLink to="/">
-                    <ListItem component="div" disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary='Dashboard' />
-                        </ListItemButton>
-                    </ListItem>
-                </NavLink>
-                <NavLink to="/">
-                    <ListItem component="div" disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary='Dashboard' />
-                        </ListItemButton>
-                    </ListItem>
-                </NavLink>
-                <NavLink to="/">
-                    <ListItem component="div" disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary='Dashboard' />
-                        </ListItemButton>
-                    </ListItem>
-                </NavLink>
-                <NavLink to="/">
-                    <ListItem component="div" disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary='Dashboard' />
-                        </ListItemButton>
-                    </ListItem>
-                </NavLink>
-                <NavLink to="/">
-                    <ListItem component="div" disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary='Dashboard' />
-                        </ListItemButton>
-                    </ListItem>
-                </NavLink>
-                <NavLink to="/">
-                    <ListItem component="div" disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary='Dashboard' />
-                        </ListItemButton>
-                    </ListItem>
-                </NavLink>
-                <NavLink to="/">
-                    <ListItem component="div" disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary='Dashboard' />
-                        </ListItemButton>
-                    </ListItem>
-                </NavLink>
-                <NavLink to="/">
-                    <ListItem component="div" disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary='Dashboard' />
-                        </ListItemButton>
-                    </ListItem>
-                </NavLink>
-                <NavLink to="/">
-                    <ListItem component="div" disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary='Dashboard' />
-                        </ListItemButton>
-                    </ListItem>
-                </NavLink>
-                <NavLink to="/">
-                    <ListItem component="div" disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary='Dashboard' />
+                            <ListItemText primary='Support' />
                         </ListItemButton>
                     </ListItem>
                 </NavLink>

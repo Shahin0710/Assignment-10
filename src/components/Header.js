@@ -1,4 +1,4 @@
-import AdbIcon from '@mui/icons-material/Adb';
+import ComputerIcon from '@mui/icons-material/Computer';
 import MenuIcon from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
 import Avatar from '@mui/material/Avatar';
@@ -12,8 +12,9 @@ import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
+import Color from './Color';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['Courses', 'FAQ', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Header() {
@@ -40,7 +41,7 @@ function Header() {
     <AppBar position="fixed" color='secondary' sx={{ zIndex: (theme) => theme.zIndex.drawer + 2 }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <ComputerIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -56,7 +57,7 @@ function Header() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            eLS
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -95,7 +96,7 @@ function Header() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <ComputerIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -112,7 +113,7 @@ function Header() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            eLS
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -127,6 +128,7 @@ function Header() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
+            <Color />
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />

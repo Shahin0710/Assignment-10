@@ -11,18 +11,6 @@ const ComponentsLayout = ({ children }) => {
   const matches = useMediaQuery(theme.breakpoints.up('md'));
 
   return (
-    // <CommonLayout>
-    //   <Box sx={{ display: 'flex' }}>
-    //     <Box>
-    //         {matches && <Sidebar />}
-    //     </Box>
-    //      <Box component="main" pb={8} sx={{ flexGrow: 1 }}>
-    //         <Box sx={{ px: { sm: 0, md: 2 }, width: '100%' }}>
-    //           <Box>{children}</Box>
-    //         </Box>
-    //       </Box>
-    //   </Box>
-    // </CommonLayout>
     <CommonLayout>
       <Box sx={{ display: 'flex' }}>
         {matches && <Sidebar />}
