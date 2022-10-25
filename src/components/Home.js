@@ -1,14 +1,14 @@
 import React from 'react';
-import Sidebar from './Sidebar';
+import ComponentsLayout from './ComponentsLayout';
 
 const Home = () => {
   return (
-    <Sidebar>
+    <ComponentsLayout>
         <h1>Home</h1>
         <h1>Home</h1>
         <h1>Home</h1>
         <h1>Home</h1>
-    </Sidebar>
+    </ComponentsLayout>
   )
 }
 
