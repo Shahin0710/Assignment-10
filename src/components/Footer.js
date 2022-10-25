@@ -13,7 +13,7 @@ import * as React from 'react';
 const Footer = function () {
     return (
         <footer>
-            <Paper variant="outlined" square sx={{ p: 5, mt: 5, backgroundColor: '#282c34', color: 'white'}}>
+            <Paper variant="outlined" square sx={{ p: 5, backgroundColor: '#9c27b0', color: 'white'}}>
                 <Grid container direction="row" justifyContent="space-between" spacing={3}>
                     <Grid item xs={6} md={4}>
                         <List>

@@ -36,7 +36,8 @@ function Header() {
   };
 
   return (
-    <AppBar position="static">
+    <>
+    <AppBar position="fixed" color='secondary' sx={{ zIndex: (theme) => theme.zIndex.drawer + 2 }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -157,6 +158,8 @@ function Header() {
         </Toolbar>
       </Container>
     </AppBar>
+    <Toolbar />
+    </>
   );
 }
 export default Header;
