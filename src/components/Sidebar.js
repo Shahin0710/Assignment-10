@@ -65,7 +65,7 @@ const Sidebar = function () {
     const location = useLocation();
 
     return (
-        <Drawer variant="permanent" open={true} sx={{ height: '100%' }}>
+        <Drawer variant="permanent" open={true} maxheight="xs">
             <SidebarNav component="nav" disablePadding>
                 <NavLink to="/"
                     className={

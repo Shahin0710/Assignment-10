@@ -10,6 +10,7 @@ import Product from './components/Product';
 import Report from './components/Report';
 import Support from './components/Support';
 import Team from './components/Team';
+import ProtectedRoute from './routes/ProtectedRoute';
 
 function App() {
 
@@ -18,14 +19,16 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} /> 
           <Route path="/login" element={<PageLogin />} /> 
-          <Route path="/signup" element={<PageSignUp />} /> 
-          <Route path="/faq" element={<Faq />} /> 
-          <Route path="/courses" element={<Courses />} /> 
-          <Route path="/blog" element={<Blog />} /> 
-          <Route path="/report" element={<Report />} /> 
-          <Route path="/product" element={<Product />} /> 
-          <Route path="/team" element={<Team />} /> 
-          <Route path="/support" element={<Support />} /> 
+          <Route path="/signup" element={<PageSignUp />} />
+          <Route element={<ProtectedRoute />}>
+              <Route path="/faq" element={<Faq />} /> 
+              <Route path="/courses" element={<Courses />} /> 
+              <Route path="/blog" element={<Blog />} /> 
+              <Route path="/report" element={<Report />} /> 
+              <Route path="/product" element={<Product />} /> 
+              <Route path="/team" element={<Team />} /> 
+              <Route path="/support" element={<Support />} /> 
+          </Route>
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>

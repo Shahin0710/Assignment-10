@@ -17,6 +17,7 @@ import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { makeStyles } from 'tss-react/mui';
+import { AuthContext } from '../contexts/UserContext';
 import Color from './Color';
 
 const pages = [
@@ -51,6 +52,8 @@ const useStyles = makeStyles()((theme) => {
  });
 
 function Header() {
+  const {user, logOut} = React.useContext(AuthContext);
+
   const { classes } = useStyles();
   const location = useLocation();
   const navigate = useNavigate();
@@ -72,6 +75,15 @@ function Header() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const handleSignOut = () => {
+      logOut()
+          .then(() => { })
+          .catch(error => console.error(error));
+          navigate('/login');
+  }
+
+  console.log(user);
 
   return (
     <>
@@ -177,9 +189,9 @@ function Header() {
 
           <Box sx={{ flexGrow: 0 }}>
             <Color />
-            <Tooltip title="This is a Name">
+            <Tooltip title={user?.displayName}>
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="e" src={user?.photoURL} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -199,14 +211,17 @@ function Header() {
               onClose={handleCloseUserMenu}
             >
                 <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography onClick={() => navigate('/login')} textAlign="center">Login</Typography>
+                  <Typography onClick={() => navigate('/signup')} textAlign="center">Sign up</Typography>
                 </MenuItem>
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography onClick={() => navigate('/signup')} textAlign="center">Signup</Typography>
-                </MenuItem>
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">Log Out</Typography>
-                </MenuItem>
+                {user?.email ? 
+                    <MenuItem onClick={handleCloseUserMenu}>
+                      <Typography onClick={handleSignOut} textAlign="center">Sign out</Typography>
+                    </MenuItem>
+                      :
+                    <MenuItem onClick={handleCloseUserMenu}>
+                      <Typography onClick={() => navigate('/login')} textAlign="center">Sign in</Typography>
+                    </MenuItem>
+                }
             </Menu>
           </Box>
         </Toolbar>

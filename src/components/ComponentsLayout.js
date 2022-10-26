@@ -14,7 +14,7 @@ const ComponentsLayout = ({ children }) => {
     <CommonLayout>
       <Box sx={{ display: 'flex' }}>
         {matches && <Sidebar />}
-        <Box sx={{ m: 5 }}>
+        <Box sx={{ m: 5, width: '100%' }}>
           {children}
         </Box>
       </Box>
