@@ -30,7 +30,6 @@ const PageSignUp = () => {
     const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
-    // console.log(name, photo, email, password);
     
     createUser(email, password)
         .then(result => {
@@ -158,10 +157,10 @@ const PageSignUp = () => {
               </Grid>
               <Grid container sx={{ mt: 3 }}>
                 <Grid item xs>
-                  <Button onClick={handleGoogleSignIn} size="small">Sign in with google</Button>
+                  <Button onClick={handleGoogleSignIn} size="small" startIcon={<GoogleIcon />}>Sign Up With Google</Button>
                 </Grid>
                 <Grid item>
-                  <Button onClick={handleGoogleSignIn} size="small" startIcon={<GoogleIcon />}>Google</Button>
+                  {''}
                 </Grid>
               </Grid>
             </Box>

@@ -83,8 +83,6 @@ function Header() {
           navigate('/login');
   }
 
-  console.log(user);
-
   return (
     <>
     <AppBar position="fixed" color='secondary' sx={{ zIndex: (theme) => theme.zIndex.drawer + 2 }}>
