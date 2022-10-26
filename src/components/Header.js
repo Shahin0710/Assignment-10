@@ -22,7 +22,7 @@ import Color from './Color';
 
 const pages = [
     {name: 'Courses', path: '/courses',},
-    {name: 'FAQ', path: '/faq',},
+    {name: 'Cart', path: '/product',},
     {name: 'Blog', path: '/blog',},
 ];
 
@@ -33,7 +33,7 @@ const pagesForMobile = [
     {name: 'Team', path: '/team',},
     {name: 'Support', path: '/support',},
     {name: 'Courses', path: '/courses',},
-    {name: 'FAQ', path: '/faq',},
+    {name: 'Cart', path: '/product',},
     {name: 'Blog', path: '/blog',},
 ];
 

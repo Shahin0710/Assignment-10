@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import Blog from './components/Blog';
 import Courses from './components/Courses';
-import Faq from './components/Faq';
 import Home from './components/Home';
 import PageLogin from './components/PageLogin';
 import PageNotFound from './components/PageNotFound';
@@ -21,7 +20,6 @@ function App() {
           <Route path="/login" element={<PageLogin />} /> 
           <Route path="/signup" element={<PageSignUp />} />
           {/* ProtectedRoute */}
-              <Route path="/faq" element={<ProtectedRoute><Faq /></ProtectedRoute>} /> 
               <Route path="/courses" element={<ProtectedRoute><Courses /></ProtectedRoute>} /> 
               <Route path="/blog" element={<ProtectedRoute><Blog /></ProtectedRoute>} /> 
               <Route path="/report" element={<ProtectedRoute><Report /></ProtectedRoute>} /> 
