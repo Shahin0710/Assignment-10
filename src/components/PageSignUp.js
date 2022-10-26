@@ -1,3 +1,4 @@
+import GoogleIcon from '@mui/icons-material/Google';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
@@ -140,14 +141,6 @@ const PageSignUp = () => {
                   />
                 </Grid>
               </Grid>
-                  <Grid container sx={{ mt: 3 }}>
-                    <Grid item xs>
-                      <Button onClick={handleGoogleSignIn} size="small">Sign in with google</Button>
-                    </Grid>
-                    <Grid item>
-                      <Button size="small">Sign in with Github</Button>
-                    </Grid>
-                  </Grid>
               <Button
                 type="submit"
                 fullWidth
@@ -161,6 +154,14 @@ const PageSignUp = () => {
                   <Link href="/login" variant="body2">
                     Already have an account? Sign in
                   </Link>
+                </Grid>
+              </Grid>
+              <Grid container sx={{ mt: 3 }}>
+                <Grid item xs>
+                  <Button onClick={handleGoogleSignIn} size="small">Sign in with google</Button>
+                </Grid>
+                <Grid item>
+                  <Button onClick={handleGoogleSignIn} size="small" startIcon={<GoogleIcon />}>Google</Button>
                 </Grid>
               </Grid>
             </Box>

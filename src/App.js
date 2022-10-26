@@ -20,15 +20,15 @@ function App() {
           <Route path="/" element={<Home />} /> 
           <Route path="/login" element={<PageLogin />} /> 
           <Route path="/signup" element={<PageSignUp />} />
-          <Route element={<ProtectedRoute />}>
-              <Route path="/faq" element={<Faq />} /> 
-              <Route path="/courses" element={<Courses />} /> 
-              <Route path="/blog" element={<Blog />} /> 
-              <Route path="/report" element={<Report />} /> 
-              <Route path="/product" element={<Product />} /> 
-              <Route path="/team" element={<Team />} /> 
-              <Route path="/support" element={<Support />} /> 
-          </Route>
+          {/* ProtectedRoute */}
+              <Route path="/faq" element={<ProtectedRoute><Faq /></ProtectedRoute>} /> 
+              <Route path="/courses" element={<ProtectedRoute><Courses /></ProtectedRoute>} /> 
+              <Route path="/blog" element={<ProtectedRoute><Blog /></ProtectedRoute>} /> 
+              <Route path="/report" element={<ProtectedRoute><Report /></ProtectedRoute>} /> 
+              <Route path="/product" element={<ProtectedRoute><Product /></ProtectedRoute>} /> 
+              <Route path="/team" element={<ProtectedRoute><Team /></ProtectedRoute>} /> 
+              <Route path="/support" element={<ProtectedRoute><Support /></ProtectedRoute>} /> 
+          {/* ProtectedRoute */}
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>
