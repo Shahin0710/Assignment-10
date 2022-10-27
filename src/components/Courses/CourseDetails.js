@@ -8,13 +8,21 @@ import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import ComponentsLayout from '../ComponentsLayout';
 
 const theme = createTheme();
 
 const CourseDetails = () => {
+    const singleId = useParams();
     const navigate = useNavigate();
+    const [categories, setCategories] = React.useState({});
+
+    React.useEffect( () =>{
+        fetch(`http://localhost:8001/course-data/${singleId?.id}`)
+        .then( res => res.json())
+        .then(data => setCategories(data));
+    }, [])
 
   return (
     <ComponentsLayout>
@@ -25,22 +33,27 @@ const CourseDetails = () => {
               <Grid container spacing={4}>
                 <Box>
                   <Box sx={{my: 5}}>
-                    <Button onClick={() => navigate('/react_to_pdf')} size="small">Pdf Download</Button>
+                    <Button onClick={() => navigate('/react_to_pdf')} size="small">Download</Button>
                   </Box>
                   <Card sx={{ maxWidth: 450 }}>
                     <CardMedia
                       component="img"
                       height="100%"
-                      image="https://cdn.pixabay.com/photo/2016/04/04/14/12/monitor-1307227__340.jpg"
-                      alt="image"
+                      image={categories?.img}
+                      alt={categories?.name}
                     />
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="div">
-                        Lizard
+                        {categories?.name}
+                      </Typography>
+                      <Typography gutterBottom variant="h5" component="div">
+                        $ {categories?.price}
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                        Lizards are a widespread group of squamate reptiles, with over 6,000
-                        species, ranging across all continents except Antarctica
+                        {categories?.description}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {categories?.description}
                       </Typography>
                     </CardContent>
                     <CardActions>

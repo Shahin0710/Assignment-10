@@ -13,39 +13,19 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/UserContext';
 import ComponentsLayout from './ComponentsLayout';
 
-const Data = [
-  {
-    "name": "Kids Love",
-    "img": "https://media.istockphoto.com/photos/your-painting-is-beautiful-well-done-picture-id1369912893?s=612x612"
-  },
-  {
-    "name": "Teaching Happy",
-    "img": "https://media.istockphoto.com/photos/arab-male-english-teacher-explaining-rules-near-blackboard-standing-picture-id1342027604?s=612x612"
-  },
-  {
-    "name": "Teacher In Class",
-    "img": "https://media.istockphoto.com/photos/portrait-of-happy-high-school-teacher-in-the-classroom-looking-at-picture-id1354640844"
-  },
-  {
-    "name": "Kids Love",
-    "img": "https://media.istockphoto.com/photos/shot-of-a-woman-hugging-her-learners-picture-id1395831599?s=612x612"
-  },
-  {
-    "name": "Our Sincere",
-    "img": "https://media.istockphoto.com/photos/hispanic-mom-helping-her-little-daughter-do-her-homework-mom-teaching-picture-id1372354626?b=1&k=20&m=1372354626&s=170667a&w=0&h=wf2qoR1545PrVreMgbFhEsoDseA_1a0vZwyOTb1IKm4="
-  },
-  {
-    "name": "Being Professional",
-    "img": "https://media.istockphoto.com/photos/smiling-computer-science-teacher-using-laptop-during-a-class-and-at-picture-id1366724990?b=1&k=20&m=1366724990&s=170667a&w=0&h=1a5RHWypGIc0o-D9pt8gNgDNB2D0MmxHg-WFlHjJaHU="
-  },
-  
-]
-
 const theme = createTheme();
 
 const Home = () => {
   const {user} = React.useContext(AuthContext);
   const navigate = useNavigate();
+
+    const [categories, setCategories] = React.useState([]);
+
+    React.useEffect( () =>{
+        fetch('http://localhost:8001/home-data')
+        .then( res => res.json())
+        .then(data => setCategories(data));
+    }, [])
 
   return (
     <ComponentsLayout>
@@ -96,7 +76,7 @@ const Home = () => {
               <Container sx={{ py: 8 }} maxWidth="md">
                 {/* End hero unit */}
                 <Grid container spacing={4}>
-                  {Data.map((items, index) => (
+                  {categories.map((items, index) => (
                     <Grid item key={index} xs={12} sm={6} md={4}>
                       <Card
                         sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}

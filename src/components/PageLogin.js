@@ -13,12 +13,16 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../contexts/UserContext';
 import ComponentsLayout from './ComponentsLayout';
 
 const theme = createTheme();
 
 const PageLogin = () => {
+    const notifyToast = () => toast("Please Enter valid Password and Email");
+
     const { signIn } = React.useContext(AuthContext);
     const navigate = useNavigate()
 
@@ -31,12 +35,14 @@ const PageLogin = () => {
         signIn(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user)
+                console.log(user);
                 form.reset();
                 navigate('/');
             })
-            .catch(error => console.error(error))
-
+            .catch(error => {
+                console.error(error)
+                notifyToast();
+            })
     }
 
   return (
@@ -104,6 +110,7 @@ const PageLogin = () => {
                 </Grid>
               </Grid>
             </Box>
+            <ToastContainer />
           </Box>
         </Container>
       </ThemeProvider>

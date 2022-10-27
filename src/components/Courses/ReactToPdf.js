@@ -9,7 +9,7 @@ const ReactToPdf = () => {
     <Box sx={{ m: 10 }}>
       <Box>
            <Pdf targetRef={ref} filename="code-example.pdf">
-               {({ toPdf }) => <Button variant="contained" onClick={toPdf}>Download</Button>}
+               {({ toPdf }) => <Button variant="contained" onClick={toPdf}>Download PDF</Button>}
            </Pdf>
       </Box>
       <Box>

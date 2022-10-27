@@ -6,8 +6,7 @@ const CoursesSidebar = ({Data}) => {
   const navigate = useNavigate();
 
   const handleDetailCourse = (id) => {
-      navigate('/courses/detail');
-      console.log('id', id);
+      navigate(`/courses/detail/${id}`);
   };
 
   return (
