@@ -3,6 +3,7 @@ import Blog from './components/Blog';
 import Checkout from './components/Courses/Checkout';
 import CourseDetails from './components/Courses/CourseDetails';
 import Courses from './components/Courses/Courses';
+import ReactToPdf from './components/Courses/ReactToPdf';
 import Home from './components/Home';
 import PageLogin from './components/PageLogin';
 import PageNotFound from './components/PageNotFound';
@@ -28,6 +29,7 @@ function App() {
               <Route path="/team" element={<ProtectedRoute><Team /></ProtectedRoute>} /> 
               <Route path="/support" element={<ProtectedRoute><Support /></ProtectedRoute>} /> 
               <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} /> 
+              <Route path="/react_to_pdf" element={<ProtectedRoute><ReactToPdf /></ProtectedRoute>} /> 
           {/* ProtectedRoute */}
           <Route path="*" element={<PageNotFound />} />
         </Routes>
