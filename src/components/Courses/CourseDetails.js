@@ -19,7 +19,7 @@ const CourseDetails = () => {
     const [categories, setCategories] = React.useState({});
 
     React.useEffect( () =>{
-        fetch(`http://localhost:8001/course-data/${singleId?.id}`)
+        fetch(`https://e-learning-server-zeta.vercel.app/course-data/${singleId?.id}`)
         .then( res => res.json())
         .then(data => setCategories(data));
     }, [])

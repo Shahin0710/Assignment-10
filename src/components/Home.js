@@ -22,7 +22,7 @@ const Home = () => {
     const [categories, setCategories] = React.useState([]);
 
     React.useEffect( () =>{
-        fetch('http://localhost:8001/home-data')
+        fetch('https://e-learning-server-zeta.vercel.app/home-data')
         .then( res => res.json())
         .then(data => setCategories(data));
     }, [])
