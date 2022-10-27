@@ -12,7 +12,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../contexts/UserContext';
@@ -26,6 +26,10 @@ const PageLogin = () => {
     const { signIn } = React.useContext(AuthContext);
     const navigate = useNavigate()
 
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
+
     const handleSubmit = event => {
         event.preventDefault();
         
@@ -37,7 +41,9 @@ const PageLogin = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
-                navigate('/');
+                // if(user.emailVerified){
+                navigate(from, {replace: true});
+                // }
             })
             .catch(error => {
                 console.error(error)
