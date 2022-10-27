@@ -1,8 +1,8 @@
 import Groups2Icon from '@mui/icons-material/Groups2';
+import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 import HomeIcon from '@mui/icons-material/Home';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import MuiDrawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -84,6 +84,23 @@ const Sidebar = function () {
                     </ListItem>
                 </NavLink>
 
+                                <NavLink to="/courses"
+                    className={
+                        location.pathname === '/courses'
+                            ? classes.navLinkActive
+                            : classes.navLink
+                    }
+                >
+                    <ListItem component="div" disablePadding sx={{ mt: 2 }}>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <HistoryEduIcon />
+                            </ListItemIcon>
+                            <ListItemText primary='Courses' />
+                        </ListItemButton>
+                    </ListItem>
+                </NavLink>
+
                 <NavLink to="/blog"
                     className={
                         location.pathname === '/blog'
@@ -114,23 +131,6 @@ const Sidebar = function () {
                                 <ReportProblemIcon />
                             </ListItemIcon>
                             <ListItemText primary='Report' />
-                        </ListItemButton>
-                    </ListItem>
-                </NavLink>
-
-                <NavLink to="/product"
-                    className={
-                        location.pathname === '/product'
-                            ? classes.navLinkActive
-                            : classes.navLink
-                    }
-                >
-                    <ListItem component="div" disablePadding sx={{ mt: 2 }}>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <ShoppingCartIcon />
-                            </ListItemIcon>
-                            <ListItemText primary='Product' />
                         </ListItemButton>
                     </ListItem>
                 </NavLink>

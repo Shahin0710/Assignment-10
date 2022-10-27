@@ -22,19 +22,16 @@ import Color from './Color';
 
 const pages = [
     {name: 'Courses', path: '/courses',},
-    {name: 'Cart', path: '/product',},
     {name: 'Blog', path: '/blog',},
 ];
 
 const pagesForMobile = [
     {name: 'Home', path: '/',},
+    {name: 'Courses', path: '/courses',},
+    {name: 'Blog', path: '/blog',},
     {name: 'Report', path: '/report',},
-    {name: 'Product', path: '/product',},
     {name: 'Team', path: '/team',},
     {name: 'Support', path: '/support',},
-    {name: 'Courses', path: '/courses',},
-    {name: 'Cart', path: '/product',},
-    {name: 'Blog', path: '/blog',},
 ];
 
 // A STYLE SHEET
